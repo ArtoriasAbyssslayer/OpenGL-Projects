@@ -1,0 +1,22 @@
+CompileFlags:
+  Add:
+    # C++ standard
+    - "-std=c++17"
+    
+    # Include paths for headers
+    - "-I${workspaceFolder}/include"
+    - "-I${workspaceFolder}/external/glad/include"
+    - "-I${workspaceFolder}/external/glfw/include"
+    - "-I${workspaceFolder}/external/glm"
+    
+  # Suppress warnings from external libraries
+  Remove:
+    - "-W*"
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+  
+# Index settings
+Index:
+  Background: Build

@@ -1,3 +1,4 @@
+#include <windows.h>
 #include<iostream>
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
@@ -8,6 +9,14 @@
 #include"EBO.h"
 
 /* GLOBALS */
+// Function to get executable path
+std::wstring ExePath() {
+    wchar_t buffer[MAX_PATH] = { 0 };  // Use wchar_t instead of TCHAR
+    GetModuleFileNameW(NULL, buffer, MAX_PATH);  // Use GetModuleFileNameW (W = wide)
+    std::wstring path(buffer);  // Now this works
+    std::wstring::size_type pos = path.find_last_of(L"\\/");
+    return path.substr(0, pos);
+}
 
 // Fullscreen quad vertices (position only, no colors needed)
 GLfloat vertices[] =
@@ -43,8 +52,11 @@ void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 
 int main()
 {
-    glfwInit();
+    std::wstring exeDir = ExePath();
+    std::wcout << L"Executable directory: " << exeDir << std::endl;
+    std::string exeDirStr(exeDir.begin(), exeDir.end());
 
+    glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -71,7 +83,10 @@ int main()
     // Load shaders - wrap in try-catch
     Shader* shaderProgram = nullptr;
     try {
-        shaderProgram = new Shader("default.vert", "fragment.glsl");
+        // Concatenate paths for shader files
+        std::string vertPath = exeDirStr + "\\Shaders\\default.vert";
+        std::string fragPath = exeDirStr + "\\Shaders\\fragment.glsl";
+        shaderProgram = new Shader(vertPath.c_str(), fragPath.c_str());
         std::cout << "Shaders compiled successfully!" << std::endl;
     }
     catch (const std::exception& e) {
@@ -146,6 +161,5 @@ int main()
     delete shaderProgram;
     glfwDestroyWindow(window);
     glfwTerminate();
-
     return 0;
 }
