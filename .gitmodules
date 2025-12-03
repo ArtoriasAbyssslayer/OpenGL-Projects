@@ -1,0 +1,21 @@
+[submodule "blackhole-simulation/extern/glfw"]
+	path = blackhole-simulation/extern/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "blackhole-simulation/extern/glad"]
+	path = blackhole-simulation/extern/glad
+	url = https://github.com/Dav1dde/glad.git
+[submodule "blackhole-simulation/extern/glm"]
+	path = blackhole-simulation/extern/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "blackhole-simulation/extern/eigen"]
+	path = blackhole-simulation/extern/eigen
+	url = https://gitlab.com/libeigen/eigen.git
+[submodule "blackhole-simulation/extern/stb"]
+	path = blackhole-simulation/extern/stb
+	url = https://github.com/nothings/stb.git
+[submodule "blackhole-simulation/extern/inipp"]
+	path = blackhole-simulation/extern/inipp
+	url = https://github.com/mcmtroffaes/inipp
+[submodule "blackhole-simulation/extern/tinyply"]
+	path = blackhole-simulation/extern/tinyply
+	url = https://github.com/ddiakopoulos/tinyply
