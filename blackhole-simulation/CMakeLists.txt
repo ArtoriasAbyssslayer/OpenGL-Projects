@@ -17,14 +17,14 @@ find_package(OpenGL REQUIRED)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-add_subdirectory(external/glfw)
+add_subdirectory(extern/glfw)
 
 # GLAD
-add_library(glad external/glad/src/glad.c)
-target_include_directories(glad PUBLIC external/glad/include)
+add_library(glad extern/glad/src/glad.c)
+target_include_directories(glad PUBLIC extern/glad/include)
 
 # GLM (header-only math library)
-add_subdirectory(external/glm)
+add_subdirectory(extern/glm)
 
 # Source files
 set(SOURCES

@@ -1,9 +1,6 @@
 [submodule "blackhole-simulation/extern/glfw"]
 	path = blackhole-simulation/extern/glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "blackhole-simulation/extern/glad"]
-	path = blackhole-simulation/extern/glad
-	url = https://github.com/Dav1dde/glad.git
 [submodule "blackhole-simulation/extern/glm"]
 	path = blackhole-simulation/extern/glm
 	url = https://github.com/g-truc/glm.git
