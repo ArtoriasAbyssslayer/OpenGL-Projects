@@ -16,3 +16,6 @@
 [submodule "blackhole-simulation/extern/tinyply"]
 	path = blackhole-simulation/extern/tinyply
 	url = https://github.com/ddiakopoulos/tinyply
+[submodule "blackhole-simulation/extern/glad"]
+	path = blackhole-simulation/extern/glad
+	url = https://github.com/Dav1dde/glad.git
