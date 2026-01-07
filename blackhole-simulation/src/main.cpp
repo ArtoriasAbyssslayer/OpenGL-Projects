@@ -4,6 +4,11 @@
 #include "Renderer.h"
 #include "Camera.h"
 #include "BlackHole.h"
+#include "AccretionDisk.h"
+#include "Starfield.h"
+#include "RelativisticJet.h"
+#include "GravitationalField.h"
+#include "LensingGrid.h"
 
 // Window dimensions
 const unsigned int SCR_WIDTH = 1280;
@@ -69,8 +74,15 @@ int main() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Create renderer and scene objects
-    Renderer renderer;
+    Renderer renderer(SCR_WIDTH, SCR_HEIGHT);
     BlackHole blackHole(glm::vec3(0.0f, 0.0f, 0.0f), 1.0f);
+    AccretionDisk accretionDisk(glm::vec3(0.0f, 0.0f, 0.0f), 
+                               blackHole.getSchwarzschildRadius() * 2.0f,
+                               blackHole.getSchwarzschildRadius() * 8.0f);
+    Starfield starfield(2000, 100.0f);
+    RelativisticJet jets(blackHole.getPosition(), blackHole.getSchwarzschildRadius());
+    GravitationalField gravField(blackHole.getPosition(), blackHole.getSchwarzschildRadius(), 20.0f);
+    LensingGrid lensingGrid(blackHole.getPosition(), blackHole.getSchwarzschildRadius(), 15, 1.5f);
 
     std::cout << "Black Hole Simulation Started!" << std::endl;
     std::cout << "Controls:" << std::endl;
@@ -93,8 +105,8 @@ int main() {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Render black hole
-        renderer.render(blackHole, camera);
+        // Render scene with NASA-style boundaries
+        renderer.render(blackHole, accretionDisk, starfield, jets, gravField, lensingGrid, camera, deltaTime, currentFrame);
 
         // Swap buffers and poll events
         glfwSwapBuffers(window);

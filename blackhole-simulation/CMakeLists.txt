@@ -33,6 +33,12 @@ set(SOURCES
     src/Camera.cpp
     src/BlackHole.cpp
     src/Renderer.cpp
+    src/AccretionDisk.cpp
+    src/Starfield.cpp
+    src/PostProcessor.cpp
+    src/RelativisticJet.cpp
+    src/GravitationalField.cpp
+    src/LensingGrid.cpp
 )
 
 set(HEADERS
@@ -40,6 +46,11 @@ set(HEADERS
     include/Camera.h
     include/BlackHole.h
     include/Renderer.h
+    include/AccretionDisk.h
+    include/Starfield.h
+    include/PostProcessor.h
+    include/RelativisticJet.h
+    include/GravitationalField.h
 )
 
 # Executable

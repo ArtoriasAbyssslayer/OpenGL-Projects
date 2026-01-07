@@ -1,0 +1,24 @@
+#version 430 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in float aBrightness;
+layout (location = 2) in float aSize;
+layout (location = 3) in vec3 aColor;
+
+out vec3 FragPos;
+out float Brightness;
+out float Size;
+out vec3 Color;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main() {
+    FragPos = vec3(model * vec4(aPos, 1.0));
+    Brightness = aBrightness;
+    Size = aSize;
+    Color = aColor;
+    
+    gl_Position = projection * view * vec4(FragPos, 1.0);
+    gl_PointSize = Size * 2.0;
+}
